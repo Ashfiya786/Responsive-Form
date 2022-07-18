@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Trirong&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Document</title>
+</head>
+
+<style>
+  .form-new {
+    width: 500px;
+  }
+
+  @media only screen and (max-width: 576px) {
+    .form-new {
+      width: 100%;
+    }
+  }
+
+  .register-heading {
+    font-family: 'Poppins', sans-serif;
+    color: #0A0A23;
+  }
+
+  .submit-btn {
+    /* background-color: #0A0A23; */
+    border: 1px solid #0a0a23;
+  }
+
+  .submit-btn:hover {
+    /* border: none; */
+    background-color: #0A0A23;
+    transition: 0.5s;
+  }
+
+  .form-control {
+    outline: auto;
+    outline-color: lightgray;
+  }
+</style>
+
+<body>
+  <div class="form_outer_container py-10 px-2 text-white flex flex-col  justify-center items-center h-screen">
+    <div class="form-new flex flex-col justify-center items-left " id="home" role="tabpanel" aria-labelledby="home-tab">
+      <h3 class="register-heading text-5xl mb-4 font-bold">Get In Touch</h3>
+      <h3 class="register-heading-2 text-lg mb-10 text-black">Connect with the support cell of TheCyberDelta</h3>
+      <div class="row register-form">
+        <div class="column">
+          <form method="post" autocomplete="off" name="google-sheet">
+            <div class="form-group mb-5 w-full rounded-md ">
+              <input type="text" name="Name" class="form-control p-2 w-full rounded-md text-black "
+                placeholder="Your Name *" value="" required="" />
+            </div>
+            <div class="form-group mb-5 w-full rounded-md">
+              <input type="text" name="Email" class="form-control p-2 w-full rounded-md text-black"
+                placeholder="Your Email *" value="" required="" />
+            </div>
+            <div class="form-group mb-5 w-full rounded-md">
+              <input type="number" name="Phone" class="form-control p-2 w-full rounded-md text-black"
+                placeholder="Your Contact Number *" value="" required="" />
+            </div>
+            <div class="form-group mb-20 w-full rounded-md h-20">
+              <textarea type="text" name="Message" class="form-control p-2 w-full rounded-md text-black comment-box"
+                cols="30" rows="5" placeholder="Comment or Message *" value="" required=""></textarea>
+            </div>
+            <div class="form-group mb-5 w-48 rounded-2xl text-black hover:text-white font-bold submit-btn ">
+              <input type="submit" name="submit"
+                class="btnSubmit cursor-pointer btn-block p-4 w-48 rounded-md font-bold" value="Send Message" />
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz3hL1zU8jEKXMouhF2cFPrJN8vgxgz3jdBHKS07Yf31CIWm_HqzYEIGuGzA4whYDwX/exec'
+    const form = document.forms['google-sheet']
+
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+
+</html>
+</body>
+
+</html>
